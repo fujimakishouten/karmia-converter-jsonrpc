@@ -1,6 +1,6 @@
 {
     "name": "karmia-converter-jsonrpc",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Convert karmia-rpc response to JSON-RPC 2.0",
     "homepage": "https://github.com/fujimakishouten/karmia-converter-jsonrpc",
     "license": "MIT",
