@@ -1,6 +1,6 @@
-declare module KarmiaConverter {
-    export class KarmiaConverterJSONRPC {
-        convert(request: Object, response: Object): Array<Object>|Object;
-        convertError(error: Error): Error;
-    }
+declare class KarmiaConverterJSONRPC {
+    convert(request: Array<object>|object, response: Array<object>|object): Array<object>|object;
+    convertError(error: Error): Error;
 }
+
+export = KarmiaConverterJSONRPC;

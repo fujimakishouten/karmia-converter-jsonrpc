@@ -8,7 +8,7 @@
 // Variables
 const expect = require('expect.js'),
     karmia_converter_jsonrpc = require('../'),
-    converter = karmia_converter_jsonrpc();
+    converter = new karmia_converter_jsonrpc();
 
 
 describe('karmia-converter-jsonrpc', function () {
