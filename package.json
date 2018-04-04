@@ -1,6 +1,6 @@
 {
     "name": "karmia-converter-jsonrpc",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Convert karmia-rpc response to JSON-RPC 2.0",
     "homepage": "https://github.com/fujimakishouten/karmia-converter-jsonrpc",
     "license": "MIT",
@@ -17,9 +17,13 @@
     },
     "dependencies": {},
     "devDependencies": {
-        "expect.js": ">=0.3.1",
-        "istanbul": ">=0.4.5",
-        "mocha": ">=4.0.1"
+        "eslint": "^4.19.1",
+        "expect.js": "^0.3.1",
+        "istanbul": "^1.1.0-alpha.1",
+        "mocha": "^5.0.5",
+        "tslint": "^5.9.1",
+        "tslint-eslint-rules": "^5.1.0",
+        "typescript": "^2.8.1"
     },
     "engines": {
         "node": ">=4.0.0"
