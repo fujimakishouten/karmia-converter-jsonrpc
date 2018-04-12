@@ -14,8 +14,8 @@ const expect = require("expect.js");
 const converter = new KarmiaConverterJSONRPC();
 
 
-// Classes
-class JSONRPCError extends Error {
+// Declarations
+declare class JSONRPCError extends Error {
     code?: number;
     data?: any;
     [index: string]: any;
@@ -37,7 +37,7 @@ describe('karmia-converter-jsonrpc', function () {
 
             it('Error', function () {
                 const request = {jsonrpc: '2.0', method: 'error', id: 'error'},
-                    response = new JSONRPCError('TEST_EXCEPTION');
+                    response = new Error('TEST_EXCEPTION') as JSONRPCError;
                 response.code = 500;
 
                 const result = converter.convert(request, response);
@@ -68,7 +68,7 @@ describe('karmia-converter-jsonrpc', function () {
 
                 it('Error', function () {
                     const request = {jsonrpc: '2.0', method: 'error'},
-                        response = new JSONRPCError('TEST_EXCEPTION');
+                        response = new Error('TEST_EXCEPTION') as JSONRPCError;
                     response.code = 500;
 
                     const result = converter.convert(request, response);
@@ -81,7 +81,7 @@ describe('karmia-converter-jsonrpc', function () {
                         {jsonrpc: '2.0', method: 'success', id: 'success'},
                         {jsonrpc: '2.0', method: 'error', id: 'error'}
                     ],
-                    error = new JSONRPCError('TEST_EXCEPTION');
+                    error = new Error('TEST_EXCEPTION') as JSONRPCError;
                 error.code = 500;
 
                 const response = [
@@ -106,7 +106,7 @@ describe('karmia-converter-jsonrpc', function () {
         describe('Should convert error response', function () {
             describe('errorConverer', function () {
                 it('Invalid request', function () {
-                    const response = new JSONRPCError('Invalid request');
+                    const response = new Error('Invalid request') as JSONRPCError;
                     response.code = -32600;
 
                     const result = converter.convertError(response);
@@ -115,7 +115,7 @@ describe('karmia-converter-jsonrpc', function () {
                 });
 
                 it('Method not found', function () {
-                    const response = new JSONRPCError('Not Found');
+                    const response = new Error('Not Found') as JSONRPCError;
                     response.code = 404;
 
                     const result = converter.convertError(response);
@@ -124,7 +124,7 @@ describe('karmia-converter-jsonrpc', function () {
                 });
 
                 it('Invalid params', function () {
-                    const response = new JSONRPCError('Bad request');
+                    const response = new Error('Bad request') as JSONRPCError;
                     response.code = 400;
 
                     const result = converter.convertError(response);
@@ -133,7 +133,7 @@ describe('karmia-converter-jsonrpc', function () {
                 });
 
                 it('Internal error', function () {
-                    const response = new JSONRPCError('Internal Server Error');
+                    const response = new Error('Internal Server Error') as JSONRPCError;
                     response.code = 500;
 
                     const result = converter.convertError(response);
@@ -145,7 +145,7 @@ describe('karmia-converter-jsonrpc', function () {
             describe('converter', function () {
                 it('Invalid request', function () {
                     const request = {method: 'error', id: 'error'},
-                        response = new JSONRPCError('Invalid request');
+                        response = new Error('Invalid request') as JSONRPCError;
                     response.code = -32600;
 
                     const result = converter.convert(request, response);
@@ -156,7 +156,7 @@ describe('karmia-converter-jsonrpc', function () {
 
                 it('Method not found', function () {
                     const request = {jsonrpc: '2.0', id: 'error'},
-                        response = new JSONRPCError('Not Found');
+                        response = new Error('Not Found') as JSONRPCError;
                     response.code = 404;
 
                     const result = converter.convert(request, response);
@@ -167,7 +167,7 @@ describe('karmia-converter-jsonrpc', function () {
 
                 it('Invalid params', function () {
                     const request = {jsonrpc: '2.0', method: 'badRequest', id: 'error'},
-                        response = new JSONRPCError('Bad request');
+                        response = new Error('Bad request') as JSONRPCError;
                     response.code = 400;
 
                     const result = converter.convert(request, response);
@@ -178,7 +178,7 @@ describe('karmia-converter-jsonrpc', function () {
 
                 it('Internal error', function () {
                     const request = {jsonrpc: '2.0', method: 'internalServerError', id: 'error'},
-                        response = new JSONRPCError('Internal Server Error');
+                        response = new Error('Internal Server Error') as JSONRPCError;
                     response.code = 500;
 
                     const result = converter.convert(request, response);
